@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>open (ALSA::PCM::Stream)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File /usr/local/src/ruby-alsa/lib/alsa/pcm/stream.rb, line 11</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">open</span>(<span class="ruby-identifier">device</span> = <span class="ruby-value str">&quot;default&quot;</span>, <span class="ruby-identifier">hardware_attributes</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+      <span class="ruby-identifier">options</span> = {}
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Hash</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">device</span>
+        <span class="ruby-identifier">options</span> = <span class="ruby-identifier">device</span>
+        <span class="ruby-identifier">device</span> = (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:device</span>] <span class="ruby-keyword kw">or</span> <span class="ruby-value str">&quot;default&quot;</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">buffer_time_size</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:buffer_time_size</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:buffer_time_size</span>]
+
+      <span class="ruby-identifier">handle_pointer</span> = <span class="ruby-constant">FFI</span><span class="ruby-operator">::</span><span class="ruby-constant">MemoryPointer</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">:pointer</span>
+      <span class="ruby-constant">ALSA</span><span class="ruby-operator">::</span><span class="ruby-identifier">try_to</span> <span class="ruby-node">&quot;open audio device #{device}&quot;</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-constant">ALSA</span><span class="ruby-operator">::</span><span class="ruby-constant">PCM</span><span class="ruby-operator">::</span><span class="ruby-constant">Native</span><span class="ruby-operator">::</span><span class="ruby-identifier">open</span> <span class="ruby-identifier">handle_pointer</span>, <span class="ruby-identifier">device</span>, <span class="ruby-identifier">native_constant</span>, <span class="ruby-constant">ALSA</span><span class="ruby-operator">::</span><span class="ruby-constant">PCM</span><span class="ruby-operator">::</span><span class="ruby-constant">Native</span><span class="ruby-operator">::</span><span class="ruby-constant">BLOCK</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">handle</span> = <span class="ruby-identifier">handle_pointer</span>.<span class="ruby-identifier">read_pointer</span>
+
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">hardware_parameters</span> = <span class="ruby-identifier">hardware_attributes</span>
+
+      <span class="ruby-identifier">change_software_parameters</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sw_params</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">sw_params</span>.<span class="ruby-identifier">available_minimum</span> = <span class="ruby-identifier">buffer_frame_count</span> <span class="ruby-operator">/</span> <span class="ruby-value">4</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-constant">ALSA</span><span class="ruby-operator">::</span><span class="ruby-constant">PCM</span><span class="ruby-operator">::</span><span class="ruby-constant">Native</span>.<span class="ruby-identifier">prepare</span>(<span class="ruby-identifier">handle</span>)
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+        <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">self</span> 
+        <span class="ruby-keyword kw">ensure</span>
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">close</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-keyword kw">self</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

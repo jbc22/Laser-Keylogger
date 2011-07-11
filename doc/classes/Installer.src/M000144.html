@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>update_shebang_line (Installer)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File /usr/local/src/ruby-alsa/setup.rb, line 1265</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update_shebang_line</span>(<span class="ruby-identifier">path</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">no_harm?</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">config</span>(<span class="ruby-value str">'shebang'</span>) <span class="ruby-operator">==</span> <span class="ruby-value str">'never'</span>
+    <span class="ruby-identifier">old</span> = <span class="ruby-constant">Shebang</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">path</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">old</span>
+      <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;warning: #{path}: Shebang line includes too many args.  It is not portable and your program may not work.&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">old</span>.<span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">new</span> = <span class="ruby-identifier">new_shebang</span>(<span class="ruby-identifier">old</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">new</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">old</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">config</span>(<span class="ruby-value str">'shebang'</span>) <span class="ruby-operator">==</span> <span class="ruby-value str">'all'</span>
+      <span class="ruby-identifier">new</span> = <span class="ruby-constant">Shebang</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">config</span>(<span class="ruby-value str">'rubypath'</span>))
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;updating shebang: #{File.basename(path)}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">verbose?</span>
+    <span class="ruby-identifier">open_atomic_writer</span>(<span class="ruby-identifier">path</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">output</span><span class="ruby-operator">|</span>
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">'rb'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">f</span>.<span class="ruby-identifier">gets</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">old</span>   <span class="ruby-comment cmt"># discard</span>
+        <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">new</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">output</span>.<span class="ruby-identifier">print</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">read</span>
+      }
+    }
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

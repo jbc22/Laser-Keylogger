@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>traverse (Installer)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File /usr/local/src/ruby-alsa/setup.rb, line 1529</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">traverse</span>(<span class="ruby-identifier">task</span>, <span class="ruby-identifier">rel</span>, <span class="ruby-identifier">mid</span>)
+    <span class="ruby-identifier">dive_into</span>(<span class="ruby-identifier">rel</span>) {
+      <span class="ruby-identifier">run_hook</span> <span class="ruby-node">&quot;pre-#{task}&quot;</span>
+      <span class="ruby-identifier">__send__</span> <span class="ruby-identifier">mid</span>, <span class="ruby-identifier">rel</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-regexp re">%r[\A.*?(?:/|\z)]</span>, <span class="ruby-value str">''</span>)
+      <span class="ruby-identifier">directories_of</span>(<span class="ruby-identifier">curr_srcdir</span>()).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">traverse</span> <span class="ruby-identifier">task</span>, <span class="ruby-node">&quot;#{rel}/#{d}&quot;</span>, <span class="ruby-identifier">mid</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">run_hook</span> <span class="ruby-node">&quot;post-#{task}&quot;</span>
+    }
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

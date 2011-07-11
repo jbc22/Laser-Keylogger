@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>avail_min= (ALSA::PCM::SwParameters)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File /usr/local/src/ruby-alsa/lib/alsa/pcm/sw_parameters.rb, line 26</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">avail_min=</span>(<span class="ruby-identifier">avail_min</span>)
+      <span class="ruby-constant">ALSA</span><span class="ruby-operator">::</span><span class="ruby-identifier">try_to</span> <span class="ruby-node">&quot;set avail_min (#{avail_min})&quot;</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-constant">ALSA</span><span class="ruby-operator">::</span><span class="ruby-constant">PCM</span><span class="ruby-operator">::</span><span class="ruby-constant">Native</span><span class="ruby-operator">::</span><span class="ruby-identifier">sw_params_set_avail_min</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">device</span>.<span class="ruby-identifier">handle</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">handle</span>, <span class="ruby-identifier">avail_min</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

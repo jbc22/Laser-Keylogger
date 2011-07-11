@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>mkdir_p (FileOperations)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File /usr/local/src/ruby-alsa/setup.rb, line 538</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">dirname</span>, <span class="ruby-identifier">prefix</span> = <span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-identifier">dirname</span> = <span class="ruby-identifier">prefix</span> <span class="ruby-operator">+</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">dirname</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">prefix</span>
+    <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;mkdir -p #{dirname}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">verbose?</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">no_harm?</span>
+
+    <span class="ruby-comment cmt"># Does not check '/', it's too abnormal.</span>
+    <span class="ruby-identifier">dirs</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">dirname</span>).<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">%r&lt;(?=/)&gt;</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-regexp re">/\A[a-z]:\z/i</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">dirs</span>[<span class="ruby-value">0</span>]
+      <span class="ruby-identifier">disk</span> = <span class="ruby-identifier">dirs</span>.<span class="ruby-identifier">shift</span>
+      <span class="ruby-identifier">dirs</span>[<span class="ruby-value">0</span>] = <span class="ruby-identifier">disk</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">dirs</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">dirs</span>.<span class="ruby-identifier">each_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">idx</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">path</span> = <span class="ruby-identifier">dirs</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">idx</span>].<span class="ruby-identifier">join</span>(<span class="ruby-value str">''</span>)
+      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">mkdir</span> <span class="ruby-identifier">path</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dir?</span>(<span class="ruby-identifier">path</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

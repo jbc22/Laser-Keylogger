@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>read (ALSA::PCM::Capture)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File /usr/local/src/ruby-alsa/lib/alsa/pcm/capture.rb, line 8</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read</span>
+      <span class="ruby-identifier">check_handle!</span>
+
+      <span class="ruby-constant">ALSA</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> { <span class="ruby-node">&quot;start read with #{hw_params.inspect}&quot;</span>}
+
+      <span class="ruby-constant">FFI</span><span class="ruby-operator">::</span><span class="ruby-constant">MemoryPointer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:char</span>, <span class="ruby-identifier">hw_params</span>.<span class="ruby-identifier">buffer_size_for</span>(<span class="ruby-identifier">buffer_frame_count</span>)) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-identifier">read_buffer</span> <span class="ruby-identifier">buffer</span>, <span class="ruby-identifier">buffer_frame_count</span>
+        <span class="ruby-keyword kw">end</span> <span class="ruby-keyword kw">while</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">buffer</span>, <span class="ruby-identifier">buffer_frame_count</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

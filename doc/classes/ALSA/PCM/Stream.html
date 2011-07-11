@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ALSA::PCM::Stream</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ALSA::PCM::Stream</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/usr/local/src/ruby-alsa/lib/alsa/pcm/stream_rb.html">
+                /usr/local/src/ruby-alsa/lib/alsa/pcm/stream.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000240">available_frame_count</a>&nbsp;&nbsp;
+      <a href="#M000229">buffer_frame_count</a>&nbsp;&nbsp;
+      <a href="#M000228">buffer_time_size</a>&nbsp;&nbsp;
+      <a href="#M000230">change_hardware_parameters</a>&nbsp;&nbsp;
+      <a href="#M000234">change_software_parameters</a>&nbsp;&nbsp;
+      <a href="#M000238">check_handle!</a>&nbsp;&nbsp;
+      <a href="#M000239">close</a>&nbsp;&nbsp;
+      <a href="#M000231">hardware_parameters</a>&nbsp;&nbsp;
+      <a href="#M000233">hardware_parameters=</a>&nbsp;&nbsp;
+      <a href="#M000232">hw_params</a>&nbsp;&nbsp;
+      <a href="#M000227">open</a>&nbsp;&nbsp;
+      <a href="#M000226">open</a>&nbsp;&nbsp;
+      <a href="#M000237">opened?</a>&nbsp;&nbsp;
+      <a href="#M000235">software_parameters</a>&nbsp;&nbsp;
+      <a href="#M000236">sw_params</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">buffer_time_size</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">handle</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000226" class="method-detail">
+        <a name="M000226"></a>
+
+        <div class="method-heading">
+          <a href="Stream.src/M000226.html" target="Code" class="method-signature"
+            onclick="popupCode('Stream.src/M000226.html');return false;">
+          <span class="method-name">open</span><span class="method-args">(device = &quot;default&quot;, hardware_attributes = {}, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000240" class="method-detail">
+        <a name="M000240"></a>
+
+        <div class="method-heading">
+          <a href="Stream.src/M000240.html" target="Code" class="method-signature"
+            onclick="popupCode('Stream.src/M000240.html');return false;">
+          <span class="method-name">available_frame_count</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000229" class="method-detail">
+        <a name="M000229"></a>
+
+        <div class="method-heading">
+          <a href="Stream.src/M000229.html" target="Code" class="method-signature"
+            onclick="popupCode('Stream.src/M000229.html');return false;">
+          <span class="method-name">buffer_frame_count</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000228" class="method-detail">
+        <a name="M000228"></a>
+
+        <div class="method-heading">
+          <a href="Stream.src/M000228.html" target="Code" class="method-signature"
+            onclick="popupCode('Stream.src/M000228.html');return false;">
+          <span class="method-name">buffer_time_size</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000230" class="method-detail">
+        <a name="M000230"></a>
+
+        <div class="method-heading">
+          <a href="Stream.src/M000230.html" target="Code" class="method-signature"
+            onclick="popupCode('Stream.src/M000230.html');return false;">
+          <span class="method-name">change_hardware_parameters</span><span class="method-args">() {|hw_params| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000234" class="method-detail">
+        <a name="M000234"></a>
+
+        <div class="method-heading">
+          <a href="Stream.src/M000234.html" target="Code" class="method-signature"
+            onclick="popupCode('Stream.src/M000234.html');return false;">
+          <span class="method-name">change_software_parameters</span><span class="method-args">() {|sw_params| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000238" class="method-detail">
+        <a name="M000238"></a>
+
+        <div class="method-heading">
+          <a href="Stream.src/M000238.html" target="Code" class="method-signature"
+            onclick="popupCode('Stream.src/M000238.html');return false;">
+          <span class="method-name">check_handle!</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000239" class="method-detail">
+        <a name="M000239"></a>
+
+        <div class="method-heading">
+          <a href="Stream.src/M000239.html" target="Code" class="method-signature"
+            onclick="popupCode('Stream.src/M000239.html');return false;">
+          <span class="method-name">close</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000231" class="method-detail">
+        <a name="M000231"></a>
+
+        <div class="method-heading">
+          <a href="Stream.src/M000231.html" target="Code" class="method-signature"
+            onclick="popupCode('Stream.src/M000231.html');return false;">
+          <span class="method-name">hardware_parameters</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000233" class="method-detail">
+        <a name="M000233"></a>
+
+        <div class="method-heading">
+          <a href="Stream.src/M000233.html" target="Code" class="method-signature"
+            onclick="popupCode('Stream.src/M000233.html');return false;">
+          <span class="method-name">hardware_parameters=</span><span class="method-args">(attributes= {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000232" class="method-detail">
+        <a name="M000232"></a>
+
+        <div class="method-heading">
+          <span class="method-name">hw_params</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Stream.html#M000231">hardware_parameters</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000227" class="method-detail">
+        <a name="M000227"></a>
+
+        <div class="method-heading">
+          <a href="Stream.src/M000227.html" target="Code" class="method-signature"
+            onclick="popupCode('Stream.src/M000227.html');return false;">
+          <span class="method-name">open</span><span class="method-args">(device = &quot;default&quot;, hardware_attributes = {}) {|self| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000237" class="method-detail">
+        <a name="M000237"></a>
+
+        <div class="method-heading">
+          <a href="Stream.src/M000237.html" target="Code" class="method-signature"
+            onclick="popupCode('Stream.src/M000237.html');return false;">
+          <span class="method-name">opened?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000235" class="method-detail">
+        <a name="M000235"></a>
+
+        <div class="method-heading">
+          <a href="Stream.src/M000235.html" target="Code" class="method-signature"
+            onclick="popupCode('Stream.src/M000235.html');return false;">
+          <span class="method-name">software_parameters</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000236" class="method-detail">
+        <a name="M000236"></a>
+
+        <div class="method-heading">
+          <span class="method-name">sw_params</span><span class="method-args">()</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="Stream.html#M000235">software_parameters</a>
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

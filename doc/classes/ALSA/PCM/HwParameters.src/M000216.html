@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>sample_rate (ALSA::PCM::HwParameters)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File /usr/local/src/ruby-alsa/lib/alsa/pcm/hw_parameters.rb, line 132</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sample_rate</span>
+      <span class="ruby-identifier">rate</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-constant">ALSA</span><span class="ruby-operator">::</span><span class="ruby-identifier">try_to</span> <span class="ruby-value str">&quot;get sample rate&quot;</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">rate_pointer</span> = <span class="ruby-constant">FFI</span><span class="ruby-operator">::</span><span class="ruby-constant">MemoryPointer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:int</span>)
+
+        <span class="ruby-identifier">dir_pointer</span> = <span class="ruby-constant">FFI</span><span class="ruby-operator">::</span><span class="ruby-constant">MemoryPointer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:int</span>)
+        <span class="ruby-identifier">dir_pointer</span>.<span class="ruby-identifier">write_int</span>(<span class="ruby-value">0</span>)
+
+        <span class="ruby-identifier">error_code</span> = <span class="ruby-constant">ALSA</span><span class="ruby-operator">::</span><span class="ruby-constant">PCM</span><span class="ruby-operator">::</span><span class="ruby-constant">Native</span><span class="ruby-operator">::</span><span class="ruby-identifier">hw_params_get_rate</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">handle</span>, <span class="ruby-identifier">rate_pointer</span>, <span class="ruby-identifier">dir_pointer</span>
+
+        <span class="ruby-identifier">rate</span> = <span class="ruby-identifier">rate_pointer</span>.<span class="ruby-identifier">read_int</span>
+
+        <span class="ruby-identifier">rate_pointer</span>.<span class="ruby-identifier">free</span>
+        <span class="ruby-identifier">dir_pointer</span>.<span class="ruby-identifier">free</span>
+
+        <span class="ruby-identifier">error_code</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">rate</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

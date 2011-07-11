@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>pending_if_no_device (/usr/local/src/ruby-alsa/spec/alsa/pcm/capture_spec.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File /usr/local/src/ruby-alsa/spec/alsa/pcm/capture_spec.rb, line 7</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pending_if_no_device</span>
+    <span class="ruby-identifier">pending</span>(<span class="ruby-value str">&quot;requires a real alsa device&quot;</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-value str">&quot;/proc/asound&quot;</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
